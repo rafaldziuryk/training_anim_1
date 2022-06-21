@@ -26,22 +26,16 @@ class _PageOneState extends State<PageOne> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
-    lottieAnimationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    animationController = AnimationController(vsync: this, duration: Duration(seconds: 2));
+    lottieAnimationController = AnimationController(vsync: this, duration: Duration(seconds: 2));
     animationController.forward();
     animationController.repeat(reverse: true);
 
-    fancyAnimation =
-        CurvedAnimation(parent: animationController, curve: Curves.bounceInOut);
+    fancyAnimation = CurvedAnimation(parent: animationController, curve: Curves.bounceInOut);
 
-    circleAnimation =
-        Tween<double>(begin: 0.0, end: 2 * 3.1415).animate(animationController);
-    circleFancyAnimation =
-        Tween<double>(begin: 0.0, end: 2 * 3.1415).animate(fancyAnimation);
-    fastCircleFancyAnimation =
-        Tween<double>(begin: 0.0, end: 2 * 3.1415).animate(CurvedAnimation(
+    circleAnimation = Tween<double>(begin: 0.0, end: 2 * 3.1415).animate(animationController);
+    circleFancyAnimation = Tween<double>(begin: 0.0, end: 2 * 3.1415).animate(fancyAnimation);
+    fastCircleFancyAnimation = Tween<double>(begin: 0.0, end: 2 * 3.1415).animate(CurvedAnimation(
       parent: fancyAnimation,
       curve: Interval(
         0.500,
@@ -72,37 +66,37 @@ class _PageOneState extends State<PageOne> with TickerProviderStateMixin {
           child: Center(
             child: Column(
               children: [
-                Lottie.asset(
-                  'resources/lottie_sample.json',
-                  controller: lottieAnimationController,
-                  onLoaded: (composition) {
-                    // Configure the AnimationController with the duration of the
-                    // Lottie file and start the animation.
-                    lottieAnimationController
-                      ..duration = composition.duration
-                      ..forward();
-                  },
-                ),
-                SuperAnimationWidget(
-                  listenable: animationController,
-                ),
-                TweenAnimationBuilder(
-                  tween: Tween<double>(begin: 0.0, end: 1.0),
-                  duration: Duration(seconds: 5),
-                  builder: (context, double value, widget) => FlutterLogo(
-                    size: value * 500,
-                    style: FlutterLogoStyle.stacked,
-                    textColor: Color((0xAAAAAA00 + value * 0xFF).toInt()),
-                  ),
-                ),
-                const AnimatedOpacity(
-                  opacity: 0.5,
-                  duration: kThemeAnimationDuration,
-                  child: Icon(
-                    Icons.flutter_dash,
-                    size: 100,
-                  ),
-                ),
+                // Lottie.asset(
+                //   'resources/lottie_sample.json',
+                //   controller: lottieAnimationController,
+                //   onLoaded: (composition) {
+                //     // Configure the AnimationController with the duration of the
+                //     // Lottie file and start the animation.
+                //     lottieAnimationController
+                //       ..duration = composition.duration
+                //       ..forward();
+                //   },
+                // ),
+                // SuperAnimationWidget(
+                //   listenable: animationController,
+                // ),
+                // TweenAnimationBuilder(
+                //   tween: Tween<double>(begin: 0.0, end: 1.0),
+                //   duration: Duration(seconds: 5),
+                //   builder: (context, double value, widget) => FlutterLogo(
+                //     size: value * 500,
+                //     style: FlutterLogoStyle.stacked,
+                //     textColor: Color((0xAAAAAA00 + value * 0xFF).toInt()),
+                //   ),
+                // ),
+                // const AnimatedOpacity(
+                //   opacity: 0.5,
+                //   duration: kThemeAnimationDuration,
+                //   child: Icon(
+                //     Icons.flutter_dash,
+                //     size: 100,
+                //   ),
+                // ),
                 AnimatedContainer(
                   duration: const Duration(seconds: 1),
                   width: width,
